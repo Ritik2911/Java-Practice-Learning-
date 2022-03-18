@@ -1,0 +1,51 @@
+public class QuickSort {
+
+    public static int partition(int[] arr, int low, int high){
+    
+        int pivot = arr[high];
+        int pi=low-1;
+        
+        // Placing all smaller element than pivot before pivot
+        for(int j=low;j < high;j++){
+            if(arr[j] < pivot){
+                int temp = arr[++pi];
+                arr[pi] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        
+        // Placing pivot at it's right posiiton
+        int temp = arr[++pi];
+        arr[pi] = arr[high];
+        arr[high] = temp;
+        
+        // Returning index of pivot
+        return pi;
+    }
+
+    public static void quickSort(int[] arr, int low, int high){
+    
+        if(low < high){
+            // Calling partition function to find right place for pivot and placing sorter element before pivot
+            int pivotIndex = partition(arr, low, high);
+  
+            // Recursively calling quickSort function
+            quickSort(arr, low, pivotIndex-1);
+            quickSort(arr, pivotIndex+1, high);
+        }
+    }
+    public static void main(String[] args) {
+    // Initializing Static array
+        int arr[] = {3,5,2,35,46,754,3,34};
+        int size = arr.length;
+        
+        // Calling quickSort function
+        quickSort(arr, 0, size-1);
+        
+        // Traversing and printing array using forEach Loop
+        for(int a: arr){
+            System.err.print(a+" ");
+        }
+        System.out.println();
+    }
+}
