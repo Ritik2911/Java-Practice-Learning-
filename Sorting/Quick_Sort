@@ -35,7 +35,7 @@ public class QuickSort {
         }
     }
     public static void main(String[] args) {
-    // Initializing Static array
+        // Initializing Static array
         int arr[] = {3,5,2,35,46,754,3,34};
         int size = arr.length;
         
