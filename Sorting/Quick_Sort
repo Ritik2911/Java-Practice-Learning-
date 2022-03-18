@@ -6,7 +6,7 @@ public class QuickSort {
         int pi=low-1;
         
         // Placing all smaller element than pivot before pivot
-        for(int j=low;j < high;j++){
+        for(int j=low; j < high ;j++){
             if(arr[j] < pivot){
                 int temp = arr[++pi];
                 arr[pi] = arr[j];
