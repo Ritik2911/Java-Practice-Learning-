@@ -53,8 +53,7 @@ public class StackUsingLL {
         s.push(8);
         s.pop();
         while(s.head != null){
-            System.out.println(s.head.data);
-            s.pop();
+            System.out.println(s.pop());
         }
     }
 }
