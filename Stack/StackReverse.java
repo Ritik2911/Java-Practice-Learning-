@@ -2,6 +2,8 @@ import java.util.Stack;
 
 public class StackReverse {
 
+    
+    // Code for pushing an element at last of stack using Recursion
     static void pushAtLast(int data , Stack<Integer> stack){
 
         if(stack.size() ==0){
