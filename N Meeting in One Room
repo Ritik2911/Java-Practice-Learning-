@@ -1,0 +1,92 @@
+import java.util.*;
+
+public class Pair_Comparator {
+    public static void main(String[] args) {
+
+        int start[] ={75250, 50074, 43659, 8931, 11273, 27545, 50879, 77924};
+        int end[] = {112960, 114515, 81825, 93424, 54316, 35533, 73383, 160252};
+        int n=8;
+
+        int meetingCount =1;
+
+
+        //////////////////////////////////// **********************  2D Array Method
+        
+        // int array[][] = new int[n][2];
+
+        // for(int i=0; i < n; i++){
+        //     array[i][0] = start[i];
+        //     array[i][1] = end[i];
+        // }
+
+        // // Arrays.sort(array,(int[] num1,int[] num2)->Integer.compare(num1[1],num2[1]));
+        // Arrays.sort(array,(int[] num1,int[] num2)->num1[1]-num2[1]);
+
+        // for(int i=0; i < n; i++){
+        //     System.out.println( array[i][0] +" " + array[i][1]);
+        // }
+
+        // int previousMeetingEnd = array[0][1];
+        // for(int i=1; i < n; i++){
+        //     if(array[i][0] > previousMeetingEnd){
+        //         meetingCount++;
+        //         previousMeetingEnd = array[i][1];
+        //     }
+        // }
+        ///////////////////////////////////// ******************************************************
+
+
+        /////////////////////////////////// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&  Using Pair Class (Created Below)
+        ArrayList<Pair> arrayList = new ArrayList<>();
+      
+        for(int i=0; i < n; i++){
+            arrayList.add(new Pair(start[i], end[i]));
+        }
+
+        System.out.println(arrayList);
+
+        Collections.sort(arrayList, (Pair p1, Pair p2)-> p1.getValue()-p2.getValue());
+
+        System.out.println(arrayList);
+
+        int previousMeetingEnd = arrayList.get(0).getValue();
+
+        for(int i=1; i < n; i++){
+            Pair temp = arrayList.get(i);
+            if(temp.getKey() > previousMeetingEnd){
+                meetingCount++;
+                previousMeetingEnd = temp.getValue();
+            }
+        }
+
+        ///////////////////////////////////////// &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+        System.out.println(meetingCount);
+
+    }
+}
+
+class Pair {
+
+    private int key;
+    private int value;
+
+    Pair(int key,int value){
+        this.key = key;
+        this.value = value;
+    }
+
+    int getKey(){
+        return key;
+    }
+
+    int getValue(){
+        return value;
+    }
+
+    public String toString() {
+        return "Key: " + key + " Value: " +value;
+    };
+
+}
